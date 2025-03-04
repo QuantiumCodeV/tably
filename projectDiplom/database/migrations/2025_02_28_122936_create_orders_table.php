@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('table_id')->constrained('tables')->onDelete('cascade');
             $table->decimal('total_price', 8, 2); // Общая стоимость заказа
-            $table->enum('status', ['в обработке', 'готово', 'оплачено'])->default('в обработке'); // Статус заказа
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

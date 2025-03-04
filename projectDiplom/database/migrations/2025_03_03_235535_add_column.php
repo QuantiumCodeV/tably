@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::table('orders', function (Blueprint $table) {
             $table->string('payment_method')->nullable();
             $table->string('payment_status')->nullable();
-            $table->string('status')->nullable();
 
         });
     }
@@ -27,7 +26,6 @@ return new class extends Migration
         Schema::table('orders', function (Blueprint $table) {
             $table->dropColumn('payment_method');
             $table->dropColumn('payment_status');
-            $table->dropColumn('status');
         });
     }
 };
