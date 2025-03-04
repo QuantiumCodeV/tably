@@ -15,11 +15,20 @@ use App\Http\Controllers\QrCodeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/tables/{table}/qrcode', [QrCodeController::class, 'show'])->name('table.qrcode');
     Route::get('/tables/{table}/qrcode/download', [QrCodeController::class, 'generateForTable'])->name('table.qrcode.download');
     Route::get('/qrcode/generate/{table}', [QrCodeController::class, 'generate'])->name('qrcode.generate');
+});
+
+
+Route::get('/policy', function () {
+    return view('policy');
+});
+
+Route::get('/terms', function () {
+    return view('terms');
 });
