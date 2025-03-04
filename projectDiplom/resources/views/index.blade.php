@@ -18,7 +18,7 @@
                     <img src="./assets/images/logo.png" alt="logo">
                 </div>
                 <div class="header__button">
-                    <button class="default_button" onclick="window.location.href='/login'">
+                    <button class="default_button" onclick="window.location.href='/admin/login'">
                         Вход
                     </button>
                 </div>
@@ -42,10 +42,10 @@
                             </span>
                         </div>
                         <div class="buttons">
-                            <button class="default_button" onclick="window.location.href='/login'">
+                            <button class="default_button" onclick="window.location.href='/admin/login'">
                                 Создать меню
                             </button>
-                            <button class="secondary_button" onclick="window.location.href='/login'">
+                            <button class="secondary_button" onclick="window.location.href='/admin/login'">
                                 Сканировать QR-код
                             </button>
                         </div>
@@ -137,10 +137,10 @@
                         </div>
                         <div class="buttons">
 
-                            <button class="secondary_button" onclick="window.location.href='/login'">
+                            <button class="secondary_button" onclick="window.location.href='/admin/login'">
                                 Заказать
                             </button>
-                            <button class="third_button" onclick="window.location.href='/login'">
+                            <button class="third_button" onclick="window.location.href='/admin/login'">
                                 <span>
                                     Сканировать
                                 </span>
@@ -191,10 +191,10 @@
                                     </div>
                                     <div class="buttons">
 
-                                        <button class="secondary_button" onclick="window.location.href='/login'">
+                                        <button class="secondary_button" onclick="window.location.href='/admin/login'">
                                             Заказать
                                         </button>
-                                        <button class="third_button" onclick="window.location.href='/login'">
+                                        <button class="third_button" onclick="window.location.href='/admin/login'">
                                             <span>
                                                 Сканировать
                                             </span>
@@ -234,7 +234,7 @@
 
                                         </div>
                                         <div class="buttons">
-                                            <div class="third_button" onclick="window.location.href='/login'">
+                                            <div class="third_button" onclick="window.location.href='/admin/login'">
                                                 <span>
                                                     Заказать
                                                 </span>
@@ -267,7 +267,7 @@
 
                                         </div>
                                         <div class="buttons">
-                                            <div class="third_button" onclick="window.location.href='/login'">
+                                            <div class="third_button" onclick="window.location.href='/admin/login'">
                                                 <span>
                                                     Оплатить
                                                 </span>
@@ -301,7 +301,7 @@
 
                                         </div>
                                         <div class="buttons">
-                                            <div class="third_button" onclick="window.location.href='/login'">
+                                            <div class="third_button" onclick="window.location.href='/admin/login'">
                                                 <span>
                                                     История
                                                 </span>
@@ -330,10 +330,10 @@
                                     </div>
                                     <div class="buttons">
 
-                                        <button class="secondary_button" onclick="window.location.href='/login'">
+                                        <button class="secondary_button" onclick="window.location.href='/admin/login'">
                                             Начать
                                         </button>
-                                        <button class="third_button" onclick="window.location.href='/login'">
+                                        <button class="third_button" onclick="window.location.href='/admin/login'">
                                             <span>
                                                 Подключиться
                                             </span>
@@ -369,10 +369,10 @@
                         </span>
                     </div>
                     <div class="buttons">
-                        <button class="default_button white" onclick="window.location.href='/login'">
+                        <button class="default_button white" onclick="window.location.href='/admin/login'">
                             Регистрация
                         </button>
-                        <button class="secondary_button white" onclick="window.location.href='/login'">
+                        <button class="secondary_button white" onclick="window.location.href='/admin/login'">
                             Узнать больше
                         </button>
                     </div>

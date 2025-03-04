@@ -75,7 +75,7 @@
                     <img src="./assets/images/logo.png" alt="logo">
                 </div>
                 <div class="header__button">
-                    <button class="default_button" onclick="window.location.href='/login'">
+                    <button class="default_button" onclick="window.location.href='/admin/login'">
                         Вход
                     </button>
                 </div>
