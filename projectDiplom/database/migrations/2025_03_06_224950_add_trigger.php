@@ -12,15 +12,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('menu_item_ingredients', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('menu_item_id')->constrained('menu')->onDelete('cascade');
-            $table->foreignId('ingredient_id')->constrained('ingredients')->onDelete('cascade');
-            $table->decimal('quantity_required', 8, 2); // Количество ингредиента для блюда
-            $table->timestamps();
-        });
-
-        // Триггер для обновления доступности блюд
+        // Удаляем старый триггер
+        DB::unprepared('DROP TRIGGER IF EXISTS update_menu_availability');
+        
+        // Создаем новый триггер для обновления доступности блюд
         DB::unprepared('
             CREATE TRIGGER update_menu_availability AFTER UPDATE ON ingredients
             FOR EACH ROW
@@ -47,6 +42,5 @@ return new class extends Migration
     public function down(): void
     {
         DB::unprepared('DROP TRIGGER IF EXISTS update_menu_availability');
-        Schema::dropIfExists('menu_item_ingredients');
     }
 };
