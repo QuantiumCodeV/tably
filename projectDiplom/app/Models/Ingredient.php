@@ -24,13 +24,13 @@ class Ingredient extends Model
     // Связь с блюдами через MenuItemIngredients 
     public function menuIngredients(): HasMany
     {
-        return $this->hasMany(MenuItemIngredient::class);
+        return $this->hasMany(MenuItemIngredient::class, 'ingredient_id');
     }
 
     public function menus()
     {
         return $this->belongsToMany(Menu::class, 'menu_item_ingredients', 'ingredient_id', 'menu_item_id', 'quantity_required')
-            ->withPivot('quantity')
+            ->withPivot('quantity_required')
             ->withTimestamps();
     }
 }
