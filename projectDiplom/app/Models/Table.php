@@ -49,11 +49,11 @@ class Table extends Model
         // Сохраняем QR-код в хранилище
         Storage::disk('public')->put($filename, $qrCode);
         
-        // Сохраняем путь к QR-коду в базе данных
-        $this->qr_code_url = Storage::disk('public')->url($filename);
+        // Сохраняем относительный путь к QR-коду в базе данных
+        $this->qr_code_url = $filename;
         $this->save();
         
-        return $this->qr_code_url;
+        return Storage::disk('public')->url($filename);
     }
 
     // Получить URL QR-кода
