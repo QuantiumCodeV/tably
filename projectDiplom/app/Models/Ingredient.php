@@ -18,13 +18,13 @@ class Ingredient extends Model
     // Связь с поставками
     public function supplies()
     {
-        return $this->hasMany(Supply::class, 'ingredient_id');
+        return $this->hasMany(Supply::class);
     }
 
     // Связь с блюдами через MenuItemIngredients 
     public function menuIngredients(): HasMany
     {
-        return $this->hasMany(MenuItemIngredient::class, 'ingredient_id');
+        return $this->hasMany(MenuItemIngredient::class);
     }
 
     public function menus()
