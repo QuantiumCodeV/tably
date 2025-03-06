@@ -18,7 +18,7 @@ class Ingredient extends Model
     // Связь с поставками
     public function supplies()
     {
-        return $this->hasMany(Supply::class);
+        return $this->hasMany(Supply::class, 'ingredient_id');
     }
 
     // Связь с блюдами через MenuItemIngredients 

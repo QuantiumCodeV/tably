@@ -18,6 +18,6 @@ class Supply extends Model
     // Связь с ингредиентом
     public function ingredient()
     {
-        return $this->belongsTo(Ingredient::class);
+        return $this->belongsTo(Ingredient::class, 'ingredient_id');
     }
 }
