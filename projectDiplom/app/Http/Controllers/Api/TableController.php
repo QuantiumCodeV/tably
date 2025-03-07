@@ -30,7 +30,7 @@ class TableController extends Controller
                 'id' => $table->restaurant->id,
                 'name' => $table->restaurant->name,
                 'description' => $table->restaurant->description,
-                'logo' => str_replace('https://', 'http://', $table->restaurant->logo_url) ?? null,
+                'logo' => $table->restaurant->logo_url ?? null,
                 'address' => $table->restaurant->address,
                 'phone' => $table->restaurant->phone,
             ],
