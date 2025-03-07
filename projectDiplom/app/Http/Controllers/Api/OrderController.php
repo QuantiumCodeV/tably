@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Menu;
 
-class имOrderController extends Controller
+class OrderController extends Controller
 {
     public function create(Request $request)
     {
