@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
 
-const API_URL = 'http://tably.sbs/'
+const API_URL = 'http://tably.sbs'
 
 // Получаем корзину и сессию из localStorage при инициализации
 const savedCart = localStorage.getItem('cart')
