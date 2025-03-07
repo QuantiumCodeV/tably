@@ -27,4 +27,10 @@ class Order extends Model
         return $this->belongsToMany(Menu::class, 'order_items')
                     ->withPivot('quantity', 'price');
     }
+
+    // Связь с позициями заказа
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
 }

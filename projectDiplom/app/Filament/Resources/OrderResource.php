@@ -155,9 +155,9 @@ class OrderResource extends Resource
 
                 \Filament\Infolists\Components\Section::make('Позиции заказа')
                     ->schema([
-                        \Filament\Infolists\Components\RepeatableEntry::make('items')
+                        \Filament\Infolists\Components\RepeatableEntry::make('orderItems')
                             ->schema([
-                                \Filament\Infolists\Components\TextEntry::make('dish.name')
+                                \Filament\Infolists\Components\TextEntry::make('menuItem.name')
                                     ->label('Название блюда'),
                                 \Filament\Infolists\Components\TextEntry::make('quantity')
                                     ->label('Количество'),
