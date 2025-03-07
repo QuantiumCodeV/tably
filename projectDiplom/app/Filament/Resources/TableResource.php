@@ -43,8 +43,7 @@ class TableResource extends Resource
                 Forms\Components\Select::make('restaurant_id')
                     ->label('Ресторан')
                     ->options($userRestaurants)
-                    ->required()
-                    ->visible($hasMultipleRestaurants || Auth::user()->is_admin),
+                    ->required(),
                 
                 Forms\Components\TextInput::make('table_number')
                     ->label('Номер стола')
