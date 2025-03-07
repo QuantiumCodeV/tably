@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Menu;
 
-class OrderController extends Controller
+class имOrderController extends Controller
 {
     public function create(Request $request)
     {
@@ -20,6 +20,7 @@ class OrderController extends Controller
             'items' => 'required|array',
             'items.*.id' => 'required|integer',
             'items.*.quantity' => 'required|integer|min:1',
+            'total_price' => 'required|numeric|min:0',
         ]);
 
         if ($validator->fails()) {
@@ -39,7 +40,8 @@ class OrderController extends Controller
             'table_id' => $session->table_id,
             'status' => 'pending',
             'payment_method' => $paymentMethod,
-            'payment_status' => 'pending'
+            'payment_status' => 'pending',
+            'total_price' => $request->input('total_price')
         ]);
 
         // Добавляем позиции заказа
