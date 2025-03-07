@@ -145,10 +145,10 @@ class TableResource extends Resource
                         \Filament\Infolists\Components\TextEntry::make('custom_link')
                             ->label('Ссылка для клиентов')
                             ->state(function (TableModel $record): string {
-                                return config('app.frontend_url') . '/table/' . $record->id;
+                                return env('FRONTEND_URL') . '/table/' . $record->id;
                             })
                             ->url(function (TableModel $record): string {
-                                return config('app.frontend_url') . '/table/' . $record->id;
+                                return env('FRONTEND_URL') . '/table/' . $record->id;
                             })
                             ->openUrlInNewTab()
                             ->copyable()
