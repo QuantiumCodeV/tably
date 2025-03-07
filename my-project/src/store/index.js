@@ -263,7 +263,12 @@ export default createStore({
           total_price: state.cart.total
         }
 
-        const response = await axios.post(`${API_URL}/orders/create`, orderData)
+        const response = await axios.post(`${API_URL}/orders/create`, orderData, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          }
+        })
 
         if (response.data && response.data.order_id) {
           // Очищаем корзину после успешного оформления заказа
