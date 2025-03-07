@@ -57,7 +57,7 @@ class QrCodeController extends Controller
         
         return view('qrcode.show', [
             'table' => $table,
-            'qrCodeUrl' => url(str_replace('/storage/'. $table->qr_code_url)),
+            'qrCodeUrl' => url('/storage/'. $table->qr_code_url),
             'frontendUrl' => $frontendUrl,
             'status' => $status,
         ]);
