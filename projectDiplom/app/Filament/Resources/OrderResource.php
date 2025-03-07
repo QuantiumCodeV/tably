@@ -127,25 +127,46 @@ class OrderResource extends Resource
             ]);
     }
 
-    public function infolist(Infolist $infolist): Infolist
+    public static function infolist(Infolist $infolist): Infolist
     {
         return $infolist
             ->schema([
-                TextEntry::make('id')->label('Order ID'),
-                TextEntry::make('table.restaurant.name')->label('Restaurant'),
-                TextEntry::make('table.table_number')->label('Table Number'),
-                TextEntry::make('total_price')->label('Total Price')->money('RUB'),
-                TextEntry::make('status')->label('Status'),
-                TextEntry::make('created_at')->label('Created At')->dateTime(),
-                TextEntry::make('updated_at')->label('Updated At')->dateTime(),
-                Repeater::make('items')
-                    ->label('Order Items')
+                \Filament\Infolists\Components\Section::make('Информация о заказе')
                     ->schema([
-                        TextEntry::make('dish.name')->label('Dish Name'),
-                        TextEntry::make('quantity')->label('Quantity'),
-                        TextEntry::make('price')->label('Price')->money('RUB'),
+                        \Filament\Infolists\Components\TextEntry::make('id')
+                            ->label('ID заказа'),
+                        \Filament\Infolists\Components\TextEntry::make('table.restaurant.name')
+                            ->label('Ресторан'),
+                        \Filament\Infolists\Components\TextEntry::make('table.table_number')
+                            ->label('Номер стола'),
+                        \Filament\Infolists\Components\TextEntry::make('total_price')
+                            ->label('Итоговая сумма')
+                            ->money('RUB'),
+                        \Filament\Infolists\Components\TextEntry::make('status')
+                            ->label('Статус'),
+                        \Filament\Infolists\Components\TextEntry::make('created_at')
+                            ->label('Создан')
+                            ->dateTime('d.m.Y H:i'),
+                        \Filament\Infolists\Components\TextEntry::make('updated_at')
+                            ->label('Обновлен')
+                            ->dateTime('d.m.Y H:i'),
                     ])
-                    ->columns(3),
+                    ->columns(2),
+
+                \Filament\Infolists\Components\Section::make('Позиции заказа')
+                    ->schema([
+                        \Filament\Infolists\Components\RepeatableEntry::make('items')
+                            ->schema([
+                                \Filament\Infolists\Components\TextEntry::make('dish.name')
+                                    ->label('Название блюда'),
+                                \Filament\Infolists\Components\TextEntry::make('quantity')
+                                    ->label('Количество'),
+                                \Filament\Infolists\Components\TextEntry::make('price')
+                                    ->label('Цена')
+                                    ->money('RUB'),
+                            ])
+                            ->columns(3)
+                    ])
             ]);
     }
 
