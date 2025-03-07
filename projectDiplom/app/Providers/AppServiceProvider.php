@@ -36,7 +36,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        URL::forceScheme('http');
         // Установка русской локализации для Filament
         App::setLocale('ru');
         
