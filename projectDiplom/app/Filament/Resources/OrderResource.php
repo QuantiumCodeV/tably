@@ -12,6 +12,9 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\Repeater;
+use Filament\Infolists\Infolist;
 
 class OrderResource extends Resource
 {
