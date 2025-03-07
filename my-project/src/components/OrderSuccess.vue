@@ -5,32 +5,42 @@
         <h2>Заказ успешно оформлен!</h2>
         <button class="close-success-btn" @click="close">×</button>
       </div>
-      
+
       <div class="order-success-content">
         <div class="success-icon">✓</div>
         <p class="success-message">Ваш заказ принят и передан на кухню</p>
         <p class="cooking-time">Примерное время приготовления: 15-20 минут</p>
-        
+
         <div class="payment-info">
-          <p>Способ оплаты: <span>{{ getPaymentMethodName(paymentMethod) }}</span></p>
-          <p>Статус оплаты: <span>{{ paymentStatus === 'paid' ? 'Оплачено' : 'Ожидает оплаты' }}</span></p>
+          <p>
+            Способ оплаты:
+            <span>{{ getPaymentMethodName(paymentMethod) }}</span>
+          </p>
+          <p>
+            Статус оплаты:
+            <span>{{
+              paymentStatus === "paid" ? "Оплачено" : "Ожидает оплаты"
+            }}</span>
+          </p>
         </div>
-        
+
         <div class="order-items">
           <h3>Состав заказа:</h3>
           <div class="order-item" v-for="item in orderItems" :key="item.id">
             <div class="order-item-name">{{ item.name }}</div>
             <div class="order-item-quantity">{{ item.quantity }} шт.</div>
-            <div class="order-item-price">{{ item.price * item.quantity }} ₽</div>
+            <div class="order-item-price">
+              {{ item.price * item.quantity }} ₽
+            </div>
           </div>
-          
+
           <div class="order-total">
             <div>Итого:</div>
             <div class="total-price">{{ orderTotal }} ₽</div>
           </div>
         </div>
       </div>
-      
+
       <div class="order-success-footer">
         <button class="btn-continue" @click="close">Продолжить</button>
       </div>
@@ -40,48 +50,63 @@
 
 <script>
 export default {
-  name: 'OrderSuccess',
+  name: "OrderSuccess",
   props: {
     visible: {
       type: Boolean,
-      default: false
+      default: false,
     },
     orderId: {
       type: [Number, String],
-      default: null
+      default: null,
     },
     orderItems: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     orderTotal: {
       type: Number,
-      default: 0
+      default: 0,
     },
     paymentMethod: {
       type: String,
-      default: 'card'
+      default: "card",
     },
     paymentStatus: {
       type: String,
-      default: 'pending'
-    }
+      default: "pending",
+    },
   },
   methods: {
     close() {
-      this.$emit('close');
+      console.log('Закрываем окно успешного заказа');
+      this.$emit("close");
     },
     getPaymentMethodName(method) {
       const methods = {
-        'card': 'Банковская карта',
-        'cash': 'Наличные',
-        'sbp': 'СБП'
+        card: "Банковская карта",
+        cash: "Наличные",
+        sbp: "СБП",
       };
-      
+
       return methods[method] || method;
+    },
+  },
+  mounted() {
+    console.log('OrderSuccess компонент смонтирован, visible:', this.visible);
+    console.log('Данные заказа:', {
+      orderId: this.orderId,
+      items: this.orderItems,
+      total: this.orderTotal,
+      method: this.paymentMethod
+    });
+  },
+  watch: {
+    visible(newVal) {
+      console.log('Изменение видимости OrderSuccess:', newVal);
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -95,7 +120,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 2000;
   animation: fadeIn 0.3s ease;
 }
 
@@ -239,8 +264,12 @@ export default {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 768px) {
@@ -249,4 +278,4 @@ export default {
     max-height: 80vh;
   }
 }
-</style> 
+</style>

@@ -175,15 +175,38 @@ export default {
       if (!this.selectedPaymentMethod) return;
       
       try {
+        // Для тестирования, если корзина пуста
+        if (this.cart.items.length === 0) {
+          console.log('Тестовый режим: симулируем успешный заказ');
+          this.lastOrderId = 'test-' + Date.now();
+          this.hidePaymentModal();
+          
+          setTimeout(() => {
+            this.showOrderSuccess();
+          }, 100);
+          
+          if (this.isMobile) {
+            this.closeMobileCart();
+          }
+          
+          return;
+        }
+        
         // Передаем способ оплаты в метод checkout
         const result = await this.checkout({ 
           paymentMethod: this.selectedPaymentMethod 
         });
         
+        console.log('Результат checkout:', result); // Добавляем отладочную информацию
+        
         if (result && result.success) {
           this.lastOrderId = result.orderId;
           this.hidePaymentModal();
-          this.showOrderSuccess();
+          
+          // Добавляем задержку перед показом окна успешного заказа
+          setTimeout(() => {
+            this.showOrderSuccess();
+          }, 100);
           
           if (this.isMobile) {
             this.closeMobileCart();
@@ -201,11 +224,13 @@ export default {
     
     // Методы для окна успешного оформления заказа
     showOrderSuccess() {
+      console.log('Показываем окно успешного заказа'); // Добавляем отладочную информацию
       this.isOrderSuccessVisible = true;
       document.body.style.overflow = 'hidden'; // Блокируем прокрутку страницы
     },
     
     hideOrderSuccess() {
+      console.log('Скрываем окно успешного заказа'); // Добавляем отладочную информацию
       this.isOrderSuccessVisible = false;
       document.body.style.overflow = ''; // Разблокируем прокрутку страницы
     },
