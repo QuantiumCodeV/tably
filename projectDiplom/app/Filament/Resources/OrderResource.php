@@ -124,6 +124,28 @@ class OrderResource extends Resource
             ]);
     }
 
+    public function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                TextEntry::make('id')->label('Order ID'),
+                TextEntry::make('table.restaurant.name')->label('Restaurant'),
+                TextEntry::make('table.table_number')->label('Table Number'),
+                TextEntry::make('total_price')->label('Total Price')->money('RUB'),
+                TextEntry::make('status')->label('Status'),
+                TextEntry::make('created_at')->label('Created At')->dateTime(),
+                TextEntry::make('updated_at')->label('Updated At')->dateTime(),
+                Repeater::make('items')
+                    ->label('Order Items')
+                    ->schema([
+                        TextEntry::make('dish.name')->label('Dish Name'),
+                        TextEntry::make('quantity')->label('Quantity'),
+                        TextEntry::make('price')->label('Price')->money('RUB'),
+                    ])
+                    ->columns(3),
+            ]);
+    }
+
     public static function getRelations(): array
     {
         return [
